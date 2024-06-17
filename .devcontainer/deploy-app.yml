@@ -1,0 +1,20 @@
+# Create a GitHub action to email a report from a file at 6 a.m. daily
+- name: Email Report
+  uses: dawidd6/action-send-mail@v3
+  with:
+    server_address: smtp.gmail.com
+    server_port: 587
+    username: ${{ secrets.EMAIL }}
+    password: ${{ secrets.EMAIL_PASSWORD }}
+    subject: "Daily Report"
+    body: "Please find attached the daily report"
+    to: ${{ secrets.EMAIL }}
+    from: ${{ secrets.EMAIL }}
+    attachments: report.txt
+    time: "0 6 * * *"
+ 
+ This action uses the  action-send-mail action to send an email with a report attached. 
+ The email configuration is stored in GitHub secrets. The  EMAIL  and  EMAIL_PASSWORD  secrets are set in the repository settings. 
+ The action is scheduled to run at 6 a.m. daily. 
+ Create a GitHub Action to Deploy the App 
+ Create a GitHub action that deploys the app to Heroku.
